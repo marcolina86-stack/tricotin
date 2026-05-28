@@ -1,0 +1,750 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Font Awesome -->
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""> 
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+        :root {
+          /* --- NUEVA PALETA DE COLORES FULL PASTEL --- */
+          
+          /* Rosa Pastel Principal */
+          --primary-color: #FFB7B2;      
+          
+          /* Celeste Pastel (Para la barra superior y degradados) */
+          --pastel-blue: #A2D2FF;
+          
+          /* Fondo General (Rosa muy suave) */
+          --bg-pastel-pink: #FFF0F5;      
+          
+          /* Color oscuro para texto (Gris oscuro suave para contraste en pasteles) */
+          --text-dark: #4A4A4A;
+          --text-light-gray: #666666;
+          
+          /* Degradado Pastel (Rosa a Celeste) */
+          --gradient-pastel: linear-gradient(135deg, #FFD1DC 0%, #C1E1FF 100%);
+          
+          --white: #FFFFFF;
+          
+          --shadow-soft: 0 4px 15px rgba(162, 210, 255, 0.2);
+          --shadow-medium: 0 8px 25px rgba(255, 183, 178, 0.3);
+          
+          --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          -webkit-tap-highlight-color: transparent;
+        }
+        html {
+          scroll-behavior: smooth;
+        }
+        body {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 15px;
+          line-height: 1.4;
+          color: var(--text-dark);
+          /* FONDO GENERAL ROSA PASTEL */
+          background-color: var(--bg-pastel-pink);
+          overflow-x: hidden;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* --- INICIO: ESTILOS BARRA SUPERIOR --- */
+        .top-flash-sale-bar {
+          /* FONDO CELESTE PASTEL */
+          background-color: var(--pastel-blue); 
+          color: var(--text-dark); /* Texto oscuro para leerse bien en celeste */
+          padding: 10px 15px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          text-align: center;
+          font-family: 'Montserrat', sans-serif;
+          position: sticky;
+          top: 0;
+          z-index: 1001;
+          border-bottom: 1px solid rgba(255,255,255,0.5);
+          box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .top-bar-line-1 {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 15px;
+          width: 100%;
+        }
+        .top-flash-sale-bar .sale-title {
+            font-weight: 700;
+            letter-spacing: 0;
+            font-size: 15px;
+            color: #333;
+        }
+        .top-flash-sale-bar #flash-sale-countdown {
+            font-size: 13px;
+            font-weight: 800;
+            color: #333;
+            background-color: var(--white);
+            padding: 5px 12px;
+            border-radius: 4px;
+            min-width: 80px;
+        }
+        .top-flash-sale-bar .shop-now-btn {
+            background-color: var(--white);
+            color: var(--text-dark);
+            padding: 8px 30px;
+            text-decoration: none;
+            font-weight: 800;
+            border-radius: 4px;
+            font-size: 13px;
+            transition: var(--transition);
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .top-flash-sale-bar .shop-now-btn:hover {
+            background-color: #f0f0f0;
+            transform: scale(1.05);
+        }
+        /* --- FIN: ESTILOS BARRA SUPERIOR --- */
+
+        section { padding: 30px 15px; position: relative; }
+        .container { max-width: 100%; margin: 0 auto; padding: 0 15px; }
+        
+        h1 { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 800; color: #333; line-height: 1.2; letter-spacing: -0.5px; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 28px; text-align: center; margin-bottom: 20px; color: #333; line-height: 1.2; }
+        /* Linea debajo de H2 en degradado pastel */
+        h2::after { content: ''; display: block; width: 80px; height: 4px; background: var(--gradient-pastel); margin: 10px auto 0; border-radius: 2px; }
+        
+        .hero-image { margin: 20px auto; overflow: hidden; box-shadow: var(--shadow-medium); border-radius: 12px; position: relative; max-width: 100%; }
+        .hero-image img { width: 100%; height: auto; display: block; border-radius: 12px; }
+        
+        /* --- CAJA DE OFERTA (PRECIO) --- */
+        .offer-box { 
+            background: var(--gradient-pastel); 
+            border-radius: 12px; 
+            padding: 20px; 
+            margin: 20px auto; 
+            border: 2px solid #fff; 
+            max-width: 100%; 
+            box-shadow: var(--shadow-medium); 
+            animation: subtle-glow 2.5s infinite alternate ease-in-out; 
+        }
+        @keyframes subtle-glow { from { box-shadow: 0 0 15px rgba(162, 210, 255, 0.3); } to { box-shadow: 0 0 25px rgba(255, 183, 178, 0.5); } }
+        
+        .price-comparison { display: flex; flex-direction: column; align-items: center; gap: 3px; line-height: 1; }
+        .price-old { font-size: 18px; text-decoration: line-through; color: #555; opacity: 0.8; } 
+        .price-new { font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 700; color: #333; text-shadow: 1px 1px 0px rgba(255,255,255,0.5); text-align: center; }
+        .savings { background: #fff; color: var(--text-dark); padding: 5px 14px; border-radius: 50px; font-weight: bold; font-size: 13px; text-transform: uppercase; margin-top: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        
+        .trust-signals { display: flex; justify-content: space-around; margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.6); color: #444; font-size: 12px; font-weight: 600; }
+        .trust-signal-item { display: flex; align-items: center; gap: 6px; }
+        .trust-signal-item i { color: #333; }
+        
+        /* Botón Verde */
+        .cta-button { background: linear-gradient(135deg, #FFB7B2, #FF9E99); color: var(--white); border: none; padding: 16px; font-size: 18px; font-weight: 700; border-radius: 50px; cursor: pointer; transition: var(--transition); box-shadow: 0 8px 20px rgba(255, 183, 178, 0.4); display: block; margin: 12px auto; width: 100%; text-decoration: none; text-align: center; text-transform: uppercase; letter-spacing: 0.5px; animation: pulse-big 1.5s infinite; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+        .cta-button.green { background: linear-gradient(135deg, #81C784, #66BB6A); box-shadow: 0 8px 20px rgba(129, 199, 132, 0.4); }
+        .cta-button:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 25px rgba(0,0,0,0.1); animation: none; }
+        
+        @keyframes pulse-big { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+        
+        .guarantee-box { display: flex; align-items: center; justify-content: center; gap: 12px; background: var(--white); border-radius: 8px; padding: 12px; margin: 20px auto; box-shadow: var(--shadow-soft); max-width: 100%; border: 1px solid #fff; }
+        .guarantee-img { width: 50px; height: auto; }
+        .guarantee-text h3 { font-size: 15px; color: #333; margin-bottom: 3px; font-weight: 700; }
+        .guarantee-text p { font-size: 12px; color: var(--text-light-gray); margin: 0; }
+        
+        .payment-methods { text-align: center; margin-top: 15px; }
+        .payment-methods img { max-width: 100%; width: 250px; height: auto; }
+        
+        .gourmet-hero-final p { max-width: 600px; margin: 15px auto; color: var(--text-light-gray); }
+        
+        .benefit-card { background: var(--white); border: 1px solid #fff; border-radius: 12px; margin-bottom: 25px; box-shadow: var(--shadow-soft); overflow: hidden; }
+        .benefit-header { padding: 15px; border-bottom: 1px solid #f0f0f0; }
+        .benefit-header h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: #333; margin: 0; text-align: center; display: flex; align-items: center; justify-content: center; gap: 12px; }
+        .benefit-header h3::after { display: none; }
+        .benefit-header h3 i { font-size: 22px; }
+        .pain-card .benefit-header h3 i { color: #E57373; }
+        .gain-card .benefit-header h3 i { color: #81C784; }
+        
+        .benefit-list { padding: 20px; text-align: center; } 
+        .benefit-item { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px; font-size: 15px; line-height: 1.5; color: #555; } 
+        .benefit-item i { font-size: 20px; margin-top: 2px; }
+        .pain-card .benefit-item i { color: #E57373; }
+        .gain-card .benefit-item i { color: #81C784; }
+        
+        .transformation-divider { text-align: center; padding: 20px 0; }
+        .transformation-divider i { font-size: 28px; color: var(--primary-color); text-shadow: 1px 1px 3px rgba(0,0,0,0.1); opacity: 0; animation: cascade-fade 1.8s infinite ease-out; }
+        .transformation-divider i:nth-child(2) { animation-delay: 0.2s; }
+        .transformation-divider i:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes cascade-fade { 0% { transform: translateY(-15px); opacity: 0; } 50% { transform: translateY(0px); opacity: 1; } 100% { transform: translateY(15px); opacity: 0; } }
+        
+        .urgency-badges-container { max-width: 500px; margin: 25px auto 10px; display: flex; flex-direction: column; gap: 12px; }
+        .viewers-badge, .stock-badge { color: var(--white); font-weight: 700; padding: 12px; border-radius: 8px; font-size: 16px; text-align: center; box-shadow: var(--shadow-soft); }
+        .viewers-badge { background: #333; box-shadow: 0 0 15px rgba(0,0,0,0.1); }
+        .stock-badge { background: linear-gradient(135deg, #E57373, #D32F2F); display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .stock-badge .pulse-dot { width: 12px; height: 12px; background-color: white; border-radius: 50%; animation: pulse-red 1.5s infinite; }
+        @keyframes pulse-red { 0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); } 100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); } }
+        
+        /* --- CAJA DE WARNING / CONTADOR --- */
+        .offer-warning-enhanced { 
+            background: var(--gradient-pastel);
+            border: 2px solid #fff; 
+            border-radius: 12px; 
+            padding: 20px; 
+            margin: 20px auto; 
+            text-align: center; 
+            box-shadow: var(--shadow-medium); 
+            position: relative; 
+            overflow: hidden; 
+        }
+        .offer-warning-enhanced h3 { color: #333; font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; gap: 10px; text-shadow: none; }
+        .offer-warning-enhanced p { font-size: 14px; color: #444; line-height: 1.4; margin-bottom: 15px; font-weight: 500; }
+        .countdown-label-text { font-size: 13px; color: #555; margin-bottom: 5px; }
+        
+        .countdown-timer-enhanced { display: flex; justify-content: center; gap: 10px; text-align: center; margin-bottom: 15px; }
+        .countdown-segment { background: rgba(255,255,255,0.6); padding: 10px; border-radius: 8px; min-width: 60px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .countdown-number { font-size: 28px; font-weight: 700; color: #333; line-height: 1; }
+        .countdown-label { font-size: 10px; text-transform: uppercase; color: #555; margin-top: 5px; letter-spacing: 0.5px; }
+        
+        .final-savings { background: #fff; color: #333; padding: 8px 20px; border-radius: 50px; font-weight: bold; font-size: 16px; text-transform: uppercase; display: inline-block; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        
+        .ebooks-section { background: var(--bg-pastel-pink); }
+        .ebook-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-soft); transition: var(--transition); border: 1px solid #fff; }
+        .ebook-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-medium); }
+        .ebook-card .ebook-image { width: 100%; height: auto; }
+        .ebook-card .ebook-content { padding: 20px; text-align: left;}
+        .ebook-card .ebook-number { display: inline-block; background: var(--primary-color); color: #333; padding: 3px 12px; border-radius: 50px; font-size: 12px; font-weight: bold; margin-bottom: 8px; }
+        .ebook-card .ebook-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: #333; }
+        .ebook-content ul { padding-left: 18px; margin: 8px 0; list-style-type: none; }
+        .ebook-content li { position: relative; padding-left: 22px; margin-bottom: 8px; font-size: 14px; color: #555; }
+        .ebook-content li::before { content: '✔️'; color: #81C784; font-size: 14px; position: absolute; left: 0; top: 1px; }
+        .ebook-content p {text-align: left; font-size: 14px; margin-top: 10px; color: #555;}
+        
+        .bonus-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; margin: 25px auto 0; max-width: 900px; }
+        .bonus-card-item { background: var(--white); border: 1px solid #fff; border-radius: 10px; padding: 12px; text-align: center; transition: var(--transition); box-shadow: var(--shadow-soft); display: flex; flex-direction: column; }
+        .bonus-card-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-medium); border-color: var(--primary-color); }
+        .bonus-card-item img { width: 100%; height: 120px; border-radius: 6px; margin-bottom: 10px; object-fit: cover; background-color: #f0f0f0;}
+        .bonus-card-item h3 { font-size: 13px; font-weight: 700; color: #333; line-height: 1.3; margin: 0 0 8px 0; flex-grow: 1; }
+        .bonus-card-item .price-info { font-weight: bold; line-height: 1.3; }
+        .bonus-card-item .price-crossed { display: block; color: var(--danger); text-decoration: line-through; font-size: 12px; }
+        .bonus-card-item .price-free { display: block; color: var(--success); font-size: 14px; font-weight: 800; }
+        
+        .testimonials { background-color: var(--white); }
+        .testimonials h2 span { color: var(--primary-color); }
+        #reviews-compact .rvc-list { display: grid; grid-template-columns: 1fr; gap: 15px; }
+        /* Layout de testimonios uno al lado del otro en PC */
+        @media(min-width: 768px){ #reviews-compact .rvc-list { grid-template-columns: repeat(3, 1fr); } }
+        
+        #reviews-compact .rvc-item { display: flex; flex-direction: column; gap: 0; padding: 20px; overflow: hidden; border: 1px solid #eee; border-radius: 12px; background: var(--white); box-shadow: var(--shadow-soft); }
+        #reviews-compact .rvc-content { padding: 0; text-align: center; }
+        #reviews-compact .rvc-name { font-weight: 700; font-size: 16px; color: #333; }
+        #reviews-compact .rvc-rating { color: #FFB7B2; font-size: 14px; margin: 4px 0 8px 0; }
+        #reviews-compact .rvc-text { margin: 0; font-size: 14px; line-height: 1.4; color: #555; }
+        
+        .guarantee-section, .faq-section { background: var(--bg-pastel-pink); }
+        .faq-item { margin-bottom: 12px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-soft); border: 1px solid #fff; background: var(--white); }
+        .faq-question { padding: 15px; font-weight: 700; font-size: 15px; cursor: pointer; position: relative; display: flex; justify-content: space-between; align-items: center; color: #333; }
+        .faq-question::after { content: '+'; font-size: 22px; color: var(--primary-color); transition: var(--transition); }
+        .faq-question.active::after { content: '-'; transform: rotate(360deg); }
+        .faq-answer { padding: 0 15px; max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; font-size: 14px; }
+        .faq-answer-content { padding-bottom: 15px; line-height: 1.5; border-top: 1px solid #eee; padding-top: 15px; color: #555; }
+        
+        .offer-section { background: var(--bg-pastel-pink); color: #333; text-align: center; padding: 50px 15px; }
+        .offer-section h2 { color: #333; }
+        .offer-section p { color: #555; }
+        .offer-section .product-main-title { color: #333; }
+        .offer-section .product-downloads { color: #777; }
+        
+        footer { background: #333; color: #ccc; text-align: center; padding: 20px 15px; font-size: 12px; }
+        
+        .gourmet-hero-final { display: block; text-align: center; padding-top: 30px; }
+        .gourmet-hero-final .main-promise h2 { font-family: 'Playfair Display', serif; font-size: 28px; line-height: 1.2; font-weight: 800; color: #333; text-shadow: none; margin: 0 auto 15px auto; }
+        .gourmet-hero-final h2::after { display: none; }
+        .gourmet-hero-final p { color: #555; text-shadow: none; font-size: 16px; line-height: 1.5; margin-bottom: 25px; }
+        .gourmet-hero-final strong { color: #E57373; font-weight: 700; }
+        
+        .product-title-block { text-align: center; margin: 25px auto 15px; }
+        .product-downloads { font-size: 11px; font-weight: 600; color: #888; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+        .product-main-title { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; line-height: 1.4; color: #333; }
+        
+        .section-bg-styled { padding: 40px 15px; background-size: cover; background-position: center; background-repeat: no-repeat; position: relative; }
+        
+        .section-dolores-bg { background-image: url('https://cdn.shopify.com/s/files/1/0689/1343/0614/files/ChatGPT_Image_21_nov_2025_01_04_33.png?v=1763730455'); } 
+        .section-beneficios-bg { background-image: url('https://cdn.shopify.com/s/files/1/0689/1343/0614/files/ChatGPT_Image_21_nov_2025_01_09_24.png?v=1763730455'); } 
+        
+        .section-bg-styled::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.25); z-index: 1; }
+        
+        .section-bg-styled .container { position: relative; z-index: 2; }
+        .section-bg-styled .benefit-card { background: transparent; border: none; box-shadow: none; margin-bottom: 0; }
+        .section-bg-styled .benefit-card .benefit-header { background: transparent; border-bottom: 1px solid rgba(255,255,255,0.3); }
+        
+        .section-bg-styled .benefit-card .benefit-header h3,
+        .section-bg-styled .benefit-card .benefit-item { color: var(--white); text-shadow: 0px 2px 4px rgba(0,0,0,0.8); }
+        
+        #social-proof-popup { position: fixed; bottom: 20px; left: 20px; z-index: 2000; background-color: rgba(50, 50, 50, 0.95); color: var(--white); border-radius: 8px; padding: 12px 18px; display: flex; align-items: center; gap: 12px; box-shadow: var(--shadow-hard); transform: translateY(120%); opacity: 0; transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.5s ease; visibility: hidden; }
+        #social-proof-popup.visible { transform: translateY(0); opacity: 1; visibility: visible; }
+        #social-proof-popup .popup-avatar { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-color); }
+        #social-proof-popup .popup-content p { margin: 0; font-size: 13px; line-height: 1.3; }
+        #social-proof-popup .popup-content strong { color: var(--primary-color); font-weight: 700; }
+        #social-proof-popup .popup-content span { display: block; font-size: 11px; color: #ccc; margin-top: 3px; }
+        
+        @media(max-width: 480px) { #social-proof-popup { left: 10px; right: 10px; bottom: 10px; } }
+        @media(min-width: 560px){ #reviews-compact .rvc-list { grid-template-columns: 1fr; } } 
+        @media(min-width: 768px){ .bonus-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media(min-width: 992px){ .bonus-grid { grid-template-columns: repeat(4, 1fr); } }
+
+        /* --- NUEVOS ESTILOS PARA EL CARRUSEL --- */
+        .custom-carousel-container {
+            width: 100%;
+            overflow: hidden;
+            padding: 20px 0;
+            margin-bottom: 20px;
+        }
+        .carousel-track {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 0 15px;
+            scrollbar-width: none;
+        }
+        .carousel-track::-webkit-scrollbar {
+            display: none;
+        }
+        .carousel-item {
+            min-width: 250px;
+            max-width: 250px;
+            height: 300px;
+            scroll-snap-align: center;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+
+<!-- Barra Superior Flash -->
+<div class="top-flash-sale-bar">
+<div class="top-bar-line-1">
+<span class="sale-title">🧶✨ ¡OFERTA POR TIEMPO LIMITADO!</span>
+<div id="flash-sale-countdown">15:00</div>
+</div>
+<a href="https://pay.hotmart.com/N103126672P?off=u442t7jm" class="shop-now-btn">¡QUIERO MI PACK!</a>
+</div>
+
+<!-- Hero Section -->
+<section class="gourmet-hero-final" style="padding-bottom: 0; padding-top: 25px;">
+<div class="hero-image">
+<img loading="lazy" src="https://cdn.shopify.com/s/files/1/0689/1343/0614/files/ChatGPT_Image_21_nov_2025_12_00_37.png?v=1763737261" alt="Superpack Tricotin Portada">
+</div>
+<div class="main-promise" style="margin-bottom: 25px; max-width: 600px; margin-left: auto; margin-right: auto;">
+<h3 class="pre-headline" style="font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 15px; color: #e57373; text-transform: uppercase; letter-spacing: 0.1px; margin-bottom: 10px; line-height: 1.3;">🧶 SUPERPACK TRICOTIN</h3>
+<h2 class="main-headline" style="font-size: 28px; line-height: 1.1; margin-bottom: 12px; font-weight: 800;">💫 CREÁ, DECORÁ Y EMPRENDÉ DESDE CASA</h2>
+<p class="sub-headline" style="font-size: 16px; line-height: 1.5; max-width: 500px; margin: 0 auto;">Accedé a un pack profesional con <strong>más de 300 moldes listos para imprimir</strong> y usar, videos explicativos paso a paso y una colección de bonos que te van a acelerar el aprendizaje, incluso si recién empezás.</p>
+</div>
+</section>
+
+<!-- Sección Dolores -->
+<section class="section-bg-styled section-dolores-bg">
+<div class="container">
+<div class="benefit-card pain-card">
+<div class="benefit-header">
+<h3>
+<i class="fas fa-question-circle"></i>💬 ESTE PACK ES PARA VOS SI…</h3>
+</div>
+<div class="benefit-list">
+<div class="benefit-item">➡️<span>Probaste moldes sueltos y no te quedaron prolijos.</span>
+</div>
+<div class="benefit-item">➡️<span>Querés empezar desde cero y aprender rápido.</span>
+</div>
+<div class="benefit-item">➡️<span>Buscás moldes profesionales y listos para imprimir.</span>
+</div>
+<div class="benefit-item">➡️<span>Te gustaría vender tus creaciones desde casa.</span>
+</div>
+<div class="benefit-item">➡️<span>Querés diseños originales, prácticos y fáciles de seguir.</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Divisor -->
+<div class="transformation-divider">
+<i class="fas fa-heart"></i><i class="fas fa-star"></i><i class="fas fa-heart"></i><br>
+</div>
+
+<!-- Sección Beneficios -->
+<section class="section-bg-styled section-beneficios-bg">
+<div class="container">
+<div class="benefit-card gain-card">
+<div class="benefit-header">
+<h3>
+<i class="fas fa-star"></i>📘 CON ESTE PACK VAS A LOGRAR:</h3>
+</div>
+<div class="benefit-list">
+<div class="benefit-item">✅<span>Crear nombres, figuras y decoraciones con acabados profesionales.</span>
+</div>
+<div class="benefit-item">✅<span>Tener más de 300 moldes listos para imprimir y vender.</span>
+</div>
+<div class="benefit-item">✅<span>Aprender a usar la máquina, tejer el cordón y armar piezas sin errores.</span>
+</div>
+<div class="benefit-item">✅<span>Ahorrar tiempo evitando moldes incompletos o de mala calidad.</span>
+</div>
+<div class="benefit-item">✅<span>Empezar a emprender desde casa con productos muy vendidos.</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section style="padding-top: 30px; padding-bottom: 0; text-align: center;">
+<div class="container" style="max-width: 600px;">
+<h2>🧠 ¿QUÉ INCLUYE EL SUPERPACK TRICOTIN?</h2>
+<p style="font-size: 16px; font-style: italic; color: #555;">“Recursos simples, visuales y profesionales. Ideal para aprender, crear y vender desde casa con resultados rápidos.”</p>
+</div>
+</section>
+
+<!-- Oferta Principal -->
+<section class="hero" style="padding-top: 20px; padding-bottom: 0;">
+<div class="container" style="max-width: 500px;">
+<div class="hero-image">
+<img loading="lazy" src="https://lh3.googleusercontent.com/d/1KLu1mC3AjL1vcav3JxOZHclBSzmkvHe7" alt="Oferta Pack Tricotin">
+</div>
+<div class="product-title-block">
+<p class="product-downloads">+3.500 CLIENTES SATISFECHOS ⭐</p>
+<h1 class="product-main-title">📚 300+ Moldes + Videos + Bonos</h1>
+</div>
+<div class="offer-box">
+<div class="price-comparison">
+<div class="price-old">Valor Real: 25 USD</div>
+<div class="price-new" style="text-align: center; width: 100%;">🔥 HOY SOLO 8 USD</div>
+<div class="savings">OFERTA ESPECIAL LANZAMIENTO</div>
+</div>
+
+<!-- TEXTO Y VIDEO CON ESPACIO Y TAMAÑO MEJORADO -->
+<p style="text-align: center; font-weight: 800; font-size: 16px; margin-top: 35px; color: #333;">MIRA EL VIDEO 👇</p>
+<div style="margin: 10px auto 10px; width: 100%; border-radius: 12px; overflow: hidden; position: relative; padding-top: 56.25%; background: #000; box-shadow: var(--shadow-medium);">
+<iframe src="https://drive.google.com/file/d/1UHQH8BHsKRrqN6g4nWb26zEwHy1pVFqR/preview" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allow="autoplay" allowfullscreen></iframe>
+</div>
+<!-- FIN VIDEO -->
+
+<div class="trust-signals">
+<div class="trust-signal-item">
+<i class="fas fa-shield-alt"></i> Compra Segura</div>
+<div class="trust-signal-item">
+<i class="fab fa-whatsapp"></i> Entrega Inmediata</div>
+</div>
+</div>
+
+<!-- CAJA DE CONTADOR -->
+<div class="offer-warning-enhanced">
+<h3>
+<i class="fas fa-fire"></i> ¡OFERTA POR TIEMPO LIMITADO!</h3>
+<p>Tu acceso con todos los bonos de REGALO solo está reservado por los próximos minutos.</p>
+<div class="countdown-label-text">La oferta finaliza en:</div>
+<div class="countdown-timer-enhanced" id="offerCountdownContainer">
+<div class="countdown-segment">
+<div class="countdown-number" id="ocd-minutes">15</div>
+<div class="countdown-label">Minutos</div>
+</div>
+<div class="countdown-segment">
+<div class="countdown-number" id="ocd-seconds">00</div>
+<div class="countdown-label">Segundos</div>
+</div>
+</div>
+<div class="final-savings">¡AHORRÁ MÁS DE 60% AHORA!</div>
+</div>
+<div class="urgency-badges-container">
+<div class="viewers-badge">
+<strong><span class="viewer-count">92</span> personas</strong> están viendo esta promoción</div>
+<div class="stock-badge">
+<span class="pulse-dot"></span> ¡Últimos <strong>cupos</strong> con descuento!</div>
+</div>
+<a class="cta-button green" href="https://pay.hotmart.com/N103126672P?off=u442t7jm">🟢 ¡QUIERO MI SUPERPACK TRICOTIN!</a>
+<div class="guarantee-box">
+<img class="guarantee-img" alt="Garantía" src="https://cdn.shopify.com/s/files/1/0613/2072/4543/files/EL-PALO-CONSEJERO.webp?v=1751806357">
+<div class="guarantee-text">
+<h3>Garantía de Satisfacción 100%</h3>
+<p><strong>Tenés 7 días para verlo.</strong> Si no te convence, te devolvemos el dinero.</p>
+</div>
+</div>
+<div class="payment-methods"><img src="https://cdn.shopify.com/s/files/1/0613/2072/4543/files/IMG_2244.webp?v=1751803695" alt="Métodos de pago"></div>
+</div>
+</section>
+
+<!-- CARRUSEL -->
+<div class="custom-carousel-container">
+    <div class="carousel-track">
+        <div class="carousel-item"><img src="https://cdn.shopify.com/s/files/1/0689/1343/0614/files/9b0a7353df786e78714d11ba703752ca.jpg?v=1766112617" alt="Tricotin 1"></div>
+        <div class="carousel-item"><img src="https://cdn.shopify.com/s/files/1/0689/1343/0614/files/83f34b153a074498421f53b35b35bc8a.jpg?v=1766112617" alt="Tricotin 2"></div>
+        <div class="carousel-item"><img src="https://cdn.shopify.com/s/files/1/0689/1343/0614/files/70869cf78382df06b43cc909656581dd.jpg?v=1766112617" alt="Tricotin 3"></div>
+        <div class="carousel-item"><img src="https://cdn.shopify.com/s/files/1/0689/1343/0614/files/bbe403a4e7da515780e30424d2e60d40.jpg?v=1766112617" alt="Tricotin 4"></div>
+        <div class="carousel-item"><img src="https://cdn.shopify.com/s/files/1/0689/1343/0614/files/cfe15534b18aaf1d8d6fd63ab71f1289.jpg?v=1766112618" alt="Tricotin 5"></div>
+        <div class="carousel-item"><img src="https://cdn.shopify.com/s/files/1/0689/1343/0614/files/5d31ce40bd60b35fce0785ef7fe59944.jpg?v=1766112618" alt="Tricotin 6"></div>
+        <div class="carousel-item"><img src="https://cdn.shopify.com/s/files/1/0689/1343/0614/files/7e76650e8054aa099bf5f0138761538d.jpg?v=1766112618" alt="Tricotin 7"></div>
+        <div class="carousel-item"><img src="https://cdn.shopify.com/s/files/1/0689/1343/0614/files/f59ae684ea93d7bd9ba4ebdf01f69b9e.jpg?v=1766112618" alt="Tricotin 8"></div>
+    </div>
+</div>
+
+<section class="ebooks-section" style="padding: 30px 15px;">
+<div class="container" style="max-width: 1000px;">
+<h2>🧶 ¿Qué encontrarás dentro del Pack Completo?</h2>
+<div class="ebook-card" style="max-width: 600px; margin: 20px auto;">
+<img class="ebook-image" loading="lazy" alt="Recetario principal" src="https://cdn.shopify.com/s/files/1/0689/1343/0614/files/Diseno_sin_titulo_10.png?v=1763753509">
+<div class="ebook-content">
+<span class="ebook-number">📁Juntas aprenderemos</span>
+<p>Con esta guía completa para dominar el arte del Tricotin.</p>
+<ul>
+<li><strong>Más de 300 moldes</strong> listos para imprimir y usar.</li>
+<li><strong>Videos explicativos</strong> paso a paso para aprender desde cero.</li>
+<li>Ideal para crear decoración infantil, navideña y regalos.</li>
+<li>Formatos optimizados para celular, tablet o PC.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section class="ebooks-section" style="padding-top: 30px;">
+<div class="container" style="max-width: 800px; text-align: center;">
+<h2>🎁 Además, por comprar <strong><u>HOY</u></strong> te llevás 10<strong><u> BONOS Exclusivos</u></strong></h2>
+<p>Esto no es solo un pack de moldes, es un <strong>sistema completo para transformar tu creatividad en un negocio rentable</strong> 💚</p>
+</div>
+<div class="bonus-grid">
+<!-- Bonos del 1 al 10 -->
+<div class="bonus-card-item">
+<img alt="Bono 1" src="https://lh3.googleusercontent.com/d/1u76LsJ-tzdw6W4NOeQAQ722iNjo0XX-l">
+<h3>💎 Bono 1: Guía de Decoración Tricotin</h3>
+<div class="price-info"><span class="price-crossed">4 USD</span><span class="price-free">GRATIS</span></div>
+</div>
+<div class="bonus-card-item">
+<img alt="Bono 2" src="https://lh3.googleusercontent.com/d/1beYBrmFZTAUS-wgl_qnzLETFxFu76Th1">
+<h3>💎 Bono 2: 10 proyectos rápidos de tricotin</h3>
+<div class="price-info"><span class="price-crossed">4 USD</span><span class="price-free">GRATIS</span></div>
+</div>
+<div class="bonus-card-item">
+<img alt="Bono 3" src="https://lh3.googleusercontent.com/d/1IJxzUE9w5IurEJqAjS0EGQRxffJstvdE">
+<h3>💎 Bono 3: Guía en videos paso a paso desde cero</h3>
+<div class="price-info"><span class="price-crossed">5 USD</span><span class="price-free">GRATIS</span></div>
+</div>
+<div class="bonus-card-item">
+<img alt="Bono 4" src="https://lh3.googleusercontent.com/d/1K9tQZ7wovgTJXeFEEST6axhFWpsjC07B">
+<h3>💎 Bono 4: Como usar correctamente la maquina de tricotin</h3>
+<div class="price-info"><span class="price-crossed">5 USD</span><span class="price-free">GRATIS</span></div>
+</div>
+<div class="bonus-card-item">
+<img alt="Bono 5" src="https://lh3.googleusercontent.com/d/1Q-Go4U4BRVT0WuU_TUaelaNUXzBnFtFS">
+<h3>💎 Bono 5: Guía de tabla de precios</h3>
+<div class="price-info"><span class="price-crossed">5 USD</span><span class="price-free">GRATIS</span></div>
+</div>
+<div class="bonus-card-item">
+<img alt="Bono 6" src="https://lh3.googleusercontent.com/d/1oz4V6bhf6DuDY_Iltdrj2idqxbkC4S0_">
+<h3>💎 Bono 6: Alfabeto completo mayúscula y minúscula</h3>
+<div class="price-info"><span class="price-crossed">4 USD</span><span class="price-free">GRATIS</span></div>
+</div>
+<div class="bonus-card-item">
+<img alt="Bono 7" src="https://lh3.googleusercontent.com/d/1dbulDOf1fUbdGcoi4LFFcHACPneflHTY">
+<h3>💎 Bono 7: Guía con su Guía de 100 nombres</h3>
+<div class="price-info"><span class="price-crossed">4 USD</span><span class="price-free">GRATIS</span></div>
+</div>
+<div class="bonus-card-item">
+<img alt="Bono 8" src="https://lh3.googleusercontent.com/d/1ld9nfk3icGoJOZilbXF9eMgBovUWyui0">
+<h3>💎 Bono 8: Guía de frases y nombres mas vendidos</h3>
+<div class="price-info"><span class="price-crossed">4 USD</span><span class="price-free">GRATIS</span></div>
+</div>
+<div class="bonus-card-item">
+<img alt="Bono 9" src="https://lh3.googleusercontent.com/d/17IPGVOA359Q6RHMJGLsKgyISyr62QFba">
+<h3>💎 Bono 9: Guía de Paleta de colores</h3>
+<div class="price-info"><span class="price-crossed">3 USD</span><span class="price-free">GRATIS</span></div>
+</div>
+<div class="bonus-card-item">
+<img alt="Bono 10" src="https://lh3.googleusercontent.com/d/1nLFtc3LsgDFAZUfJSeM3Gn1NYcv0kkVj">
+<h3>💎 Bono 10: Alfabeto doble con pie</h3>
+<div class="price-info"><span class="price-crossed">9 USD</span><span class="price-free">GRATIS</span></div>
+</div>
+</div>
+</section>
+
+<section style="padding-top: 40px;" class="testimonials">
+<div class="container" style="max-width: 900px;">
+<h2>CLIENTES FELICES Y RESULTADOS REALES <span>★★★★★</span></h2>
+<section id="reviews-compact" style="padding: 0;">
+<div class="rvc-list">
+<div class="rvc-item">
+<div class="rvc-content">
+<div class="rvc-name">María S.</div>
+<div class="rvc-rating">★★★★★</div>
+<p class="rvc-text">“Los moldes son súper prolijos y listos para usar. Empecé a vender mis primeros nombres esta semana.”</p>
+</div>
+</div>
+<div class="rvc-item">
+<div class="rvc-content">
+<div class="rvc-name">Cintia P.</div>
+<div class="rvc-rating">★★★★★</div>
+<p class="rvc-text">“El video de la máquina casera me salvó. Ahora produzco más rápido y mis creaciones quedan hermosas.”</p>
+</div>
+</div>
+<div class="rvc-item">
+<div class="rvc-content">
+<div class="rvc-name">Valen G.</div>
+<div class="rvc-rating">★★★★★</div>
+<p class="rvc-text">“El pack vale oro. Es una guía completa para empezar a emprender sin perder tiempo buscando moldes en internet.”</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</section>
+
+<section style="padding-top: 40px;" class="guarantee-section">
+<div class="container" style="max-width: 500px;">
+<h2>🛡️ Compra 100% Segura y Sin Riesgo</h2>
+<p>Tenés 7 días para ver todo el contenido. Si no es para vos, te devolvemos el dinero. Sin preguntas.</p>
+<div class="guarantee-box">
+<img class="guarantee-img" alt="Garantía" src="https://cdn.shopify.com/s/files/1/0613/2072/4543/files/EL-PALO-CONSEJERO.webp?v=1751806357">
+<div class="guarantee-text">
+<h3>Garantía de Satisfacción</h3>
+<p>Probá sin riesgo alguno</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="faq-section">
+<div class="container" style="max-width: 500px;">
+<h2>🤔 Preguntas Frecuentes (FAQ)</h2>
+<div class="faq-container">
+<div class="faq-item">
+<div class="faq-question">📦 ¿Qué incluye exactamente?</div>
+<div class="faq-answer"><div class="faq-answer-content"><p>Más de 300 moldes + 10 bonos + videos explicativos en formato digital.</p></div></div>
+</div>
+<div class="faq-item">
+<div class="faq-question">📥 ¿Cómo lo recibo?</div>
+<div class="faq-answer"><div class="faq-answer-content"><p>Por WhatsApp o email de forma inmediata tras el pago.</p></div></div>
+</div>
+<div class="faq-item">
+<div class="faq-question">🎥 ¿Necesito experiencia previa?</div>
+<div class="faq-answer"><div class="faq-answer-content"><p>No, todo está explicado paso a paso en los videos y guías.</p></div></div>
+</div>
+<div class="faq-item">
+<div class="faq-question">🧶 ¿Los moldes se pueden imprimir?</div>
+<div class="faq-answer"><div class="faq-answer-content"><p>Sí, están optimizados para imprimir desde cualquier dispositivo (Celular/PC).</p></div></div>
+</div>
+<div class="faq-item">
+<div class="faq-question">💳 ¿Es un pago único?</div>
+<div class="faq-answer"><div class="faq-answer-content"><p>Sí, pagás una sola vez y el pack es tuyo para siempre.</p></div></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="offer-section">
+<div class="container" style="max-width: 500px;">
+<h2>🚀 EMPEZÁ HOY MISMO</h2>
+<p>Descargá tu Superpack Tricotin y empezá a crear, decorar y vender desde casa.</p>
+<div class="hero-image" style="margin: 20px auto;"><img loading="lazy" src="https://lh3.googleusercontent.com/d/1KLu1mC3AjL1vcav3JxOZHclBSzmkvHe7"></div>
+<div class="product-title-block">
+<p class="product-downloads">+3.500 CLIENTES SATISFECHOS ⭐</p>
+<h1 class="product-main-title">🧶 Superpack Tricotin + 10 BONOS</h1>
+</div>
+<div class="offer-box">
+<div class="price-comparison">
+<div class="price-old">Valor Real: 25 USD</div>
+<div class="price-new">🔥 HOY SOLO 8 USD</div>
+<div class="savings">AHORRÁ TIEMPO Y DINERO</div>
+</div>
+<div class="trust-signals">
+<div class="trust-signal-item"><i class="fas fa-shield-alt"></i> Compra Segura</div>
+<div class="trust-signal-item"><i class="fab fa-whatsapp"></i> Entrega Inmediata</div>
+</div>
+</div>
+<div class="urgency-badges-container">
+<div class="viewers-badge"><strong><span class="viewer-count">92</span> personas</strong> están viendo esta promoción</div>
+<div class="stock-badge"><span class="pulse-dot"></span> ¡Últimos <strong>cupos</strong> con descuento!</div>
+</div>
+<a class="cta-button green" href="https://pay.hotmart.com/N103126672P?off=u442t7jm">🟢 ¡SÍ, QUIERO MI SUPERPACK TRICOTIN!</a>
+</div>
+</section>
+
+<footer>
+<p>© 2026 – Superpack Tricotin | Todos los derechos reservados</p>
+<p>Producto digital. No se envía ningún producto físico.</p>
+</footer>
+
+<div id="social-proof-popup">
+<img alt="Avatar" class="popup-avatar" id="popup-avatar" src="https://randomuser.me/api/portraits/women/1.jpg">
+<div class="popup-content">
+<p><strong id="popup-name"></strong> compró el <strong>Superpack Tricotin + Bonos</strong>.</p>
+<span id="popup-time">hace unos segundos</span>
+</div>
+</div>
+
+<script>
+    // 1. FUNCIONALIDAD DEL RELOJ (COUNTDOWN)
+    function startTimer(durationInSeconds) {
+        let timer = durationInSeconds;
+        let minutes, seconds;
+
+        if (localStorage.getItem('tricotin_timer')) {
+            timer = parseInt(localStorage.getItem('tricotin_timer'));
+        }
+
+        const interval = setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            const topBarClock = document.getElementById('flash-sale-countdown');
+            if(topBarClock) topBarClock.textContent = minutes + ":" + seconds;
+
+            const minBox = document.getElementById('ocd-minutes');
+            const secBox = document.getElementById('ocd-seconds');
+            if(minBox) minBox.textContent = minutes;
+            if(secBox) secBox.textContent = seconds;
+
+            if (--timer < 0) {
+                timer = durationInSeconds; // Reinicia a 15 min cuando llega a cero
+            }
+            
+            localStorage.setItem('tricotin_timer', timer);
+        }, 1000);
+    }
+
+    const nombres = ["Lucía S.", "Valentina G.", "Marta R.", "Ana P.", "Carla M.", "Sofía L.", "Florencia V.", "Paola B.", "Daniela F.", "Camila T.", "Elena M.", "Gabriela S."];
+    const popup = document.getElementById('social-proof-popup');
+    const popupName = document.getElementById('popup-name');
+    const popupAvatar = document.getElementById('popup-avatar');
+
+    function showPopup() {
+        const randomName = nombres[Math.floor(Math.random() * nombres.length)];
+        const randomID = Math.floor(Math.random() * 70) + 1; // IDs de fotos de mujeres en randomuser.me
+        popupName.textContent = randomName;
+        popupAvatar.src = `https://randomuser.me/api/portraits/women/${randomID}.jpg`;
+        popup.classList.add('visible');
+        setTimeout(() => popup.classList.remove('visible'), 5000);
+    }
+
+    document.querySelectorAll('.faq-question').forEach(item => {
+        item.addEventListener('click', () => {
+            const answer = item.nextElementSibling;
+            item.classList.toggle('active');
+            answer.style.maxHeight = answer.style.maxHeight ? null : answer.scrollHeight + "px";
+        });
+    });
+
+    window.onload = function () {
+        startTimer(15 * 60); // 15 minutos exactos
+        setInterval(showPopup, 15000);
+    };
+</script>
